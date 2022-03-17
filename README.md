@@ -1,7 +1,13 @@
 # DataBind
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.5.
+## :framed_picture: Fotos do projeto
 
+ ![foto](https://github.com/giovaner10/templete_angular/blob/main/proj%206/Captura%20de%20tela%202022-03-17%20163125.png)
+ ![foto1](https://github.com/giovaner10/templete_angular/blob/main/proj%206/Captura%20de%20tela%202022-03-17%20163211.png)
+ ![foto1](https://github.com/giovaner10/templete_angular/blob/main/proj%206/Captura%20de%20tela%202022-03-17%20162704.png)
+
+ 
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.

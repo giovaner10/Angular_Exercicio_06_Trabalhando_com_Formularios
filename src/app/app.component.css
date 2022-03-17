@@ -1,0 +1,33 @@
+.container{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+#main-form{
+    width: 300px;
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.email{
+    width: 100%;
+}
+
+#sub{
+ width: 100%;
+}
+
+.divisao{
+    
+    width: 100%;
+    background-color: rgb(109, 164, 196);
+    color: black;
+    text-align: center;
+    padding: 10px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}

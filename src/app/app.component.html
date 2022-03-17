@@ -1,0 +1,196 @@
+<p class="divisao">TEMPLATE DRIVEN</p><br> 
+
+
+<section class="container">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Cadastra-se</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      <form action="" id="main-form" (ngSubmit)="openDialog()" #form="ngForm">
+
+        <mat-form-field appearance="fill" class="email">
+          <mat-label>Nome</mat-label>
+          <input type="text" matInput placeholder="Seu nome..." name="nameUser" [(ngModel)]="name" required
+            minlength="6" #inputName="ngModel">
+          <mat-error *ngIf="inputName.invalid">
+            <span *ngIf="inputName.errors?.['minlength']">Curto demais</span>
+            <span *ngIf="inputName.errors?.['required']">Campo Obrigatorio</span>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="email">
+          <mat-label>Sobrenome</mat-label>
+          <input type="text" matInput placeholder="Seu Sobrenome..." name="lastNameUser" [(ngModel)]="lastName"
+            #inputSobrenome='ngModel' required minlength="6">
+          <mat-error *ngIf="inputSobrenome.invalid">
+            <span *ngIf="inputSobrenome.errors?.['minlength']">Curto demais</span>
+            <span *ngIf="inputSobrenome.errors?.['required']">Campo Obrigatorio</span>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="email">
+          <mat-label>CPF</mat-label>
+          <input type="text" matInput placeholder="Seu CPF..." name="CPFUser" [(ngModel)]="CPF" required minlength="11"
+            #inputCPF="ngModel">
+          <mat-error *ngIf="inputCPF.invalid">
+            <span *ngIf="inputCPF.errors?.['minlength']">Curto demais</span>
+            <span *ngIf="inputCPF.errors?.['required']">Campo Obrigatorio</span>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="email">
+          <mat-label>Username</mat-label>
+          <input type="text" matInput placeholder="Seu username..." name="usernameUser" [(ngModel)]="username" required
+            minlength="4" #inputUsername="ngModel">
+          <mat-error *ngIf="inputUsername.invalid">
+            <span *ngIf="inputUsername.errors?.['minlength']">Curto demais</span>
+            <span *ngIf="inputUsername.errors?.['required']">Campo Obrigatorio</span>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="email">
+          <mat-label>Telefone</mat-label>
+          <input type="text" matInput placeholder="Seu telefone..." name="telefoneUser" [(ngModel)]="telefone" required
+            minlength="4" #inputTelefone="ngModel">
+          <mat-error *ngIf="inputTelefone.invalid">
+            <span *ngIf="inputTelefone.errors?.['minlength']">Curto demais</span>
+            <span *ngIf="inputTelefone.errors?.['required']">Campo Obrigatorio</span>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="email">
+          <mat-label>Endereco</mat-label>
+          <input type="text" matInput placeholder="Seu Endereco..." name="enderecoUser" [(ngModel)]="endereco" required
+            minlength="6" #inputEndereco="ngModel">
+          <mat-error *ngIf="inputEndereco.invalid">
+            <span *ngIf="inputEndereco.errors?.['minlength']">Curto demais</span>
+            <span *ngIf="inputEndereco.errors?.['required']">Campo Obrigatorio</span>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="email">
+          <mat-label>Complemento</mat-label>
+          <input type="text" matInput placeholder="Seu Complemento..." name="complementoUser" [(ngModel)]="Complemento"
+            required minlength="6" #inputComplemento="ngModel">
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="email">
+          <mat-label>Senha</mat-label>
+          <input type="password" matInput placeholder="Sua senha..." name="senhaUser" [(ngModel)]="senha" required
+            minlength="6" #inputSenha="ngModel">
+          <mat-error *ngIf="inputSenha.invalid || inputConfirm.value != inputSenha.value">
+            <span *ngIf="inputConfirm.value != inputSenha.value ">As senha não batem</span><br>
+            <span *ngIf="inputSenha.errors?.['minlength']">Curto demais</span>
+            <span *ngIf="inputSenha.errors?.['required']">Campo Obrigatorio</span>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="email">
+          <mat-label>Confirmar senha</mat-label>
+          <input type="password" matInput placeholder="Confirme sua senha..." name="senhaConfirmUser"
+            [(ngModel)]="senhaConfirm" required minlength="6" #inputConfirm="ngModel">
+          <mat-error>
+            <span *ngIf="verificarSenhas(inputSenha.value, inputConfirm.value)">As senha não batem</span><br>
+            <span *ngIf="inputConfirm.errors?.['minlength']">Curto demais</span>
+            <span *ngIf="inputConfirm.errors?.['required']">Campo Obrigatorio</span>
+          </mat-error>
+        </mat-form-field>
+
+        <button id="sub" mat-raised-button type="submit" color="accent" class="grow"
+          [disabled]="form.invalid || verificarSenhas(inputSenha.value, inputConfirm.value)">
+          Cadastrar
+        </button>
+
+      </form>
+
+    </mat-card-content>
+  </mat-card>
+</section>
+<br> 
+<p class="divisao">REACTIVE FORMS</p><br> 
+
+<section class="container">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Cadastra-se</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form action="" id="main-form" (ngSubmit)="openDialog2()" [formGroup]="personalData">
+        <mat-form-field appearance="fill" class="email">
+          <mat-label>Nome</mat-label>
+          <input formControlName="name2" type="text" matInput placeholder="Seu nome..." name="nameUser">
+          <mat-error>
+            <span *ngIf="personalData.controls['name2'].getError('required')">Campo obrigatorio</span>
+            <span *ngIf="personalData.controls['name2'].getError('minlength')"> Texto muito curto</span>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="email">
+          <mat-label>Sobrenome</mat-label>
+          <input formControlName="lastName2" type="text" matInput placeholder="Seu Sobrenome..." name="lastNameUser">
+          <mat-error>
+            <span *ngIf="personalData.controls['lastName2'].getError('required')">Campo obrigatorio</span>
+            <span *ngIf="personalData.controls['lastName2'].getError('minlength')"> Texto muito curto</span>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="email">
+          <mat-label>CPF</mat-label>
+          <input formControlName="CPF2" type="text" matInput placeholder="Seu Sobrenome..." name="CPF2">
+          <mat-error>
+            <span *ngIf="personalData.controls['CPF2'].getError('required')">Campo obrigatorio</span>
+            <span *ngIf="personalData.controls['CPF2'].getError('minlength')"> Texto muito curto</span>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="email">
+          <mat-label>Username</mat-label>
+          <input formControlName="username2" type="text" matInput placeholder="Seu Sobrenome..." name="username2">
+          <mat-error>
+            <span *ngIf="personalData.controls['username2'].getError('required')">Campo obrigatorio</span>
+            <span *ngIf="personalData.controls['username2'].getError('minlength')"> Texto muito curto</span>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="email">
+          <mat-label>Telefone</mat-label>
+          <input formControlName="telefone2" type="text" matInput placeholder="Seu Sobrenome..." name="telefone2">
+          <mat-error>
+            <span *ngIf="personalData.controls['telefone2'].getError('required')">Campo obrigatorio</span>
+            <span *ngIf="personalData.controls['telefone2'].getError('minlength')"> Texto muito curto</span>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="email">
+          <mat-label>Endereco</mat-label>
+          <input formControlName="endereco2" type="text" matInput placeholder="Seu Sobrenome..." name="endereco2">
+          <mat-error>
+            <span *ngIf="personalData.controls['endereco2'].getError('required')">Campo obrigatorio</span>
+            <span *ngIf="personalData.controls['endereco2'].getError('minlength')"> Texto muito curto</span>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="email">
+          <mat-label>Complemento</mat-label>
+          <input formControlName="complemento2" type="text" matInput placeholder="Seu Sobrenome..." name="complemento2">
+          <mat-error>
+            <span *ngIf="personalData.controls['complemento2'].getError('required')">Campo obrigatorio</span>
+            <span *ngIf="personalData.controls['complemento2'].getError('minlength')"> Texto muito curto</span>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="email">
+          <mat-label>Senha</mat-label>
+          <input formControlName="senha2" type="password" matInput placeholder="Seu Sobrenome..." name="senha2">
+          <mat-error>
+            <span *ngIf="verificarSenhas(personalData.controls['senha2'].value, personalData.controls['senhaConfirm2'].value)">As senhas não batem</span><br>
+            <span *ngIf="personalData.controls['senha2'].getError('required')">Campo obrigatorio</span>
+            <span *ngIf="personalData.controls['senha2'].getError('minlength')"> Texto muito curto</span>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="email">
+          <mat-label>Confirmar senha</mat-label>
+          <input formControlName="senhaConfirm2" type="password" matInput placeholder="Seu Sobrenome..."
+            name="senhaConfirm2">
+          <mat-error>
+            <span *ngIf="verificarSenhas(personalData.controls['senha2'].value, personalData.controls['senhaConfirm2'].value)">As senhas não batem</span><br>
+            <span *ngIf="personalData.controls['senhaConfirm2'].getError('required')">Campo obrigatorio</span>
+            <span *ngIf="personalData.controls['senhaConfirm2'].getError('minlength')"> Texto muito curto</span>
+          </mat-error>
+        </mat-form-field>
+        
+
+        <button [disabled]="personalData.invalid  ||verificarSenhas(personalData.controls['senha2'].value, personalData.controls['senhaConfirm2'].value )" id="sub" mat-raised-button type="submit" color="accent" class="grow">
+          Cadastrar
+        </button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</section>
